@@ -5,9 +5,9 @@ import { BellIcon, XCircleIcon, Bars4Icon } from "@heroicons/react/24/outline";
 import { useAuth } from "@/src/hooks/useAuth";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Productos", href: "/dashboard/products/", current: false },
-  { name: "Ventas", href: "#", current: false },
+  { name: "Dashboard", href: "/dashboard", current: true },
+  { name: "Productos", href: "/products/", current: false },
+  { name: "Ventas", href: "/ventas", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },

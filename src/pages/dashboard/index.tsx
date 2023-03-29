@@ -8,11 +8,57 @@ const people = [
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
   },
 ];
+import { Chart } from "@/src/common/chart";
 
-const index = () => {
+const Dashboard = () => {
+  /*const reducer = (prev, curr) => { */
+  //prev es un acumulador y curr es el elemento actual del array que se recibe como parámetro,
+  //es decir, un nombre de una categoría.
+  //La función .reduce() recorre todo el array, curr adquiere el valor de cada posición del array
+  //prev[curr] es equivalente a tener obj[elemento]
+  //Imaginemos el siguiente caso:
+  //prev = {shoes:1, others:3, clothes: 3}
+  //Al hacer prev[curr] donde curr=shoes estámos llamando al valor del objeto prev cuya clave es shoes,
+  //para este caso sería el valor de 1
+
+  //En la línea anterior accedemos al valor del objeto prev cuya clave es curr, recordemos que curr es
+  //un nombre de categoría que cambia con cada iteración. Si esa clave-valor no existe, como tiene un ||
+  //entonces crea la clave-valor y le asigna el valor de 1, el primer conteo.
+  //Si existe, entonces accede a ese valor y lo incrementa en 1, hace otro conteo*/
+
+  //Ejemplo:
+
+  //Primera iteración: prev = {}, curr = "Shoes"
+  //prev[curr] no existe, es decir no existe prev = {"Shoes":algunNumero}, entonces se le asigna 1,
+  //quedando: prev = {"Shoes":1}
+
+  //Segunda iteración: se retornó prev que es nuestro valor acumulado, actualmente prev = {"Shoes":1}
+  //Ahora curr = "Others", entonces tendríamos:
+  //prev = {"Shoes":1,"Others":1}
+
+  //Tercera iteración: prev = {"Shores:1","Others":1} curr = "Shoes"
+  //Accedemos a prev[curr], esta vez sí existe, como existe incrementamos su valor actual, quedando ahora en 2
+  //prev = {"Shoes":2,"Others":1}
+  /* const categoryNames = products?.map((product) => product.category);
+  const categoryCount = categoryNames?.map((category) => category.name);
+
+  const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});*/
+
+  const data = {
+    labels: ["Food", "Sports", "Climate", "Travels", "Books"],
+    backgroundColor: ["#c0c0c0", "#50af95", "#ffbb11", "#f3112f", "#2a71d0"],
+    datasets: [
+      {
+        label: "categories",
+        data: [23, 2, 34, 15, 26], // data: countOccurrences(categoryCount),
+        borderWidth: 1,
+        backgroundColor: ["#c0c0c0", "#50af95", "#ffbb11", "#f3112f", "#2a71d0"],
+      },
+    ],
+  };
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-4">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -71,8 +117,9 @@ const index = () => {
           </div>
         </div>
       </div>
+      <Chart className="mb-8 mt-2" chartData={data} />
     </>
   );
 };
 
-export default index;
+export default Dashboard;
