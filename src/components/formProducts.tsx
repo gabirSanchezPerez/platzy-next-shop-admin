@@ -10,19 +10,22 @@ export default function FormProduct() {
   const formRef = useRef(null);
 
   const handleSubmit = async (data: productInterface) => {
-    const formData = new FormData(formRef.current);
-    const price = parseInt(formData.get("price")) || "";
+    //const formData = new FormData(formRef.current);
+    //formData.get("description"),
     const data2 = {
-      title: formData.get("title"),
-      price,
-      description: formData.get("description"),
-      categoryId: parseInt(formData.get("category")),
-      images: [formData.get("photo").name],
+      title: data.title,
+      price: data.price,
+      description: data.description,
+      categoryId: data.category,
+      images: [data.photo.name],
     };
-    const result = await usePost(endPoints.products.postProducts, data2).then((resp) => {
-      console.log(resp);
-    });
-    console.log(result);
+    await usePost(endPoints.products.postProducts, data2)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
