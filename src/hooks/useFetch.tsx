@@ -20,4 +20,15 @@ const useFetch = (endpoint: string) => {
   return data; //[data, load, err];
 };
 
+export const usePost = async (endpoint: string, data: object) => {
+  const config = {
+    headers: {
+      accept: "*/*",
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await axios.post(endpoint, data, config);
+  return response.data;
+};
+
 export default useFetch;

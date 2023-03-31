@@ -3,8 +3,8 @@ import endPoints from "@/src/services/api";
 import { ChevronLeftIcon, ChevronDoubleLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
 
 const Products = () => {
-  const products = useFetch(endPoints.products.getProducts(5, 0));
-  console.log(products);
+  const products = useFetch(endPoints.products.getProducts(15, 230));
+
   return (
     <>
       <div className="flex flex-col">
@@ -14,7 +14,7 @@ const Products = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Id
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -26,7 +26,7 @@ const Products = () => {
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Price
                     </th>
-                   <th scope="col" className="relative px-6 py-3">
+                    <th scope="col" className="relative px-6 py-3">
                       <span className="sr-only">Edit</span>
                       <PencilSquareIcon className="h-5 w-5 text-gray-500 " aria-hidden="true" />
                     </th>
